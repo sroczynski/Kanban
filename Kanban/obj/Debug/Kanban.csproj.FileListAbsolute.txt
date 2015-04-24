@@ -84,3 +84,6 @@ C:\workspace\Kanban\Kanban\bin\zh-Hant\System.Spatial.resources.dll
 C:\workspace\Kanban\Kanban\obj\Debug\Kanban.csprojResolveAssemblyReference.cache
 C:\workspace\Kanban\Kanban\obj\Debug\Kanban.dll
 C:\workspace\Kanban\Kanban\obj\Debug\Kanban.pdb
+C:\workspace\Kanban\Kanban\bin\Google.GData.Analytics.dll
+C:\workspace\Kanban\Kanban\bin\Google.GData.Client.dll
+C:\workspace\Kanban\Kanban\bin\Google.GData.Extensions.dll
