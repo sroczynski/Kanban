@@ -16,5 +16,15 @@ namespace Kanban.Controllers
             return View();
         }
 
+        public ActionResult Criar()
+        {
+            return View("TarefaManager");
+        }
+        
+        public ActionResult Editar()
+        {
+            return View("TarefaManager");
+        }
+
     }
 }

@@ -1,0 +1,29 @@
+﻿@model List<Data.Object.Projeto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+<h2>Projeto</h2>
+
+    @Html.ActionLink("Novo", "Criar", null, htmlAttributes: new { @class="btn btn-info"});
+        
+    <table class="table table-striped">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.id
+                </td>
+                <td>
+                    @item.titulo
+                </td>
+                <td>
+                    @item.descricao
+                </td>
+            </tr>
+        }
+    </table>
+}
+

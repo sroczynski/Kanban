@@ -1,0 +1,16 @@
+﻿@model Data.Object.Tarefa
+
+@{
+    ViewBag.Title = "TarefaManager";
+
+
+    using (Ajax.BeginForm(true ? "Criar" : "Editar", new AjaxOptions() { OnSuccess="onSuccess", HttpMethod="POST"}))
+    {
+        
+        <div class="input-group">
+            <span class="form-control">Descrição</span>
+            @Html.TextBox("descricao", Model.descricao, htmlAttributes: new {id="form-control" })
+        </div>
+        
+    }
+}

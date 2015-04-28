@@ -56,6 +56,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -194,10 +196,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="avatar.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
     <Compile Include="ChartOptions.cs" />
     <Compile Include="ChartType.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="classificacao.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjetoController.cs" />
+    <Compile Include="Controllers\TarefaController.cs" />
     <Compile Include="Controls\report.ascx.cs">
       <DependentUpon>report.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -213,18 +222,78 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Examples\Ex02_Advanced.aspx.designer.cs" />
+    <Compile Include="fases.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
     <Compile Include="FeedGenerator.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="grupo_usuarios.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="grupo_usuarios_x_fases.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="grupo_usuario_x_permissao.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
     </Compile>
     <Compile Include="Json\JsonCell.cs" />
     <Compile Include="Json\JsonColumn.cs" />
     <Compile Include="Json\JsonRow.cs" />
     <Compile Include="Json\JsonTable.cs" />
     <Compile Include="Json\JsonType.cs" />
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="ModelKanban.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelKanban.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelKanban.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelKanban.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelKanban.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjetoModel.cs" />
+    <Compile Include="Models\TarefaModel.cs" />
+    <Compile Include="permissao.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="projeto.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="projeto_x_usuario.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sprints.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="status.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tarefas.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tarefa_x_comentario.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tarefa_x_usuario.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usuario.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usuario_x_grupos_usuario.cs">
+      <DependentUpon>ModelKanban.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -299,13 +368,30 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="GoogleAnalytics.csproj" />
     <Content Include="Icon.png" />
-    <Content Include="js\chart-config.js" />
-    <Content Include="js\init-analytics.js" />
-    <Content Include="js\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\js\chart-config.js" />
+    <Content Include="Scripts\js\init-analytics.js" />
+    <Content Include="Scripts\js\jquery-1.9.1.min.js" />
     <Content Include="License.txt" />
     <Content Include="READ_ME.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="ModelKanban.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelKanban.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ModelKanban.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelKanban.edmx</DependentUpon>
+      <LastGenOutput>ModelKanban.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelKanban.edmx.diagram">
+      <DependentUpon>ModelKanban.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelKanban.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelKanban.edmx</DependentUpon>
+      <LastGenOutput>ModelKanban.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
@@ -362,12 +448,24 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Tarefa\TarefaManager.cshtml" />
+    <Content Include="Views\Projeto\Index.cshtml" />
+    <Content Include="Views\Projeto\ProjetoManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{f4251c54-2a47-44c8-aaab-d36e56bceca7}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

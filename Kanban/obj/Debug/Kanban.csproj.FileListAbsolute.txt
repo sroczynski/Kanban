@@ -87,3 +87,5 @@ C:\workspace\Kanban\Kanban\obj\Debug\Kanban.pdb
 C:\workspace\Kanban\Kanban\bin\Google.GData.Analytics.dll
 C:\workspace\Kanban\Kanban\bin\Google.GData.Client.dll
 C:\workspace\Kanban\Kanban\bin\Google.GData.Extensions.dll
+C:\workspace\Kanban\Kanban\bin\Data.dll
+C:\workspace\Kanban\Kanban\bin\Data.pdb

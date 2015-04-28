@@ -2,7 +2,12 @@
     ViewBag.Title = "Home Page";
 }
 @{
-    Html.ActionLink("Gerenciamento de Tarefas", "Index", "Tarefa");
-    Html.ActionLink("Gerenciamento de Fases", "Index", "Fase");
+    <h1>KANBAN</h1>
+    
+    @Html.ActionLink("Criar Tarefas", "Criar", "Tarefa");
+    <br />
+    @Html.ActionLink("Gerenciamento de Projetos", "Index", "Projeto");
+    <br />
+    @Html.ActionLink("Gerenciamento de Fases", "Index", "Fase");
 }
 
