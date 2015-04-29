@@ -1,4 +1,5 @@
 ﻿using Data.Object;
+using Data.Object.Validation;
 using Kanban.Models;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,20 @@ namespace Kanban.Controllers
             var model = ProjetoModel.Index();
             return View(model);
         }
-
+        
+        [HttpGet]
         public ActionResult Criar()
         {
-            return View("ProjetoManager");
+            return View("ProjetoManager", new ProjetoRequest() { newRegister = true});
         }
+
+        [HttpPost]
+        public ActionResult Criar(Projeto request)
+        {
+            Result response = ProjetoModel.CriarProjeto(request);
+            return Json(response);
+        }
+
         
         [HttpGet]
         public ActionResult Editar(int projetoId)

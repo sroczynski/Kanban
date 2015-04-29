@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Data.Object;
+using Data.Object.Validation;
+using Kanban.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,21 +12,40 @@ namespace Kanban.Controllers
     public class TarefaController : Controller
     {
         //
-        // GET: /Tarefa/
+        // GET: /Projeto/
 
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult Criar()
-        {
-            return View("TarefaManager");
+            var model = TarefaModel.Index();
+            return View(model);
         }
         
-        public ActionResult Editar()
+        [HttpGet]
+        public ActionResult Criar()
         {
-            return View("TarefaManager");
+            return View("TarefaManager", new TarefaRequest() { newRegister = true});
+        }
+
+        [HttpPost]
+        public ActionResult Criar(Tarefa request)
+        {
+            Result response = TarefaModel.CriarTarefa(request);
+            return Json(response);
+        }
+
+        
+        [HttpGet]
+        public ActionResult Editar(int TarefaId)
+        {
+            TarefaRequest model = TarefaModel.EditarTarefa(TarefaId);
+            return View("TarefaManager", model);
+        }
+
+        [HttpPost]
+        public ActionResult Editar(Projeto request)
+        {
+            var response = ProjetoModel.EditarProjeto(request);
+            return Json(response);
         }
 
     }

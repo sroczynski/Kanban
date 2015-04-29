@@ -1,11 +1,7 @@
-﻿@model List<Data.Object.Projeto>
+﻿@model List<Data.Object.TarefaIndexView>
 
 @{
     ViewBag.Title = "Index";
-
-    <script>
-        
-    </script>    
 }
 
 @{
@@ -18,10 +14,11 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.id</td>
+                <td>#@item.id</td>
+                <td>@item.projeto</td>
                 <td>@item.titulo</td>
-                <td>@item.descricao</td>
-                <td>@Html.ActionLink("Editar", "Editar", new { projetoId = item.id }, htmlAttributes: new { @class = "btn btn-primary" })</td>
+                <td>@item.dtCriacao.ToString("dd/MM/yyyy hh:mm:ss")</td>
+                <td>@Html.ActionLink("Editar", "Editar", new { tarefaId = item.id }, htmlAttributes: new { @class = "btn btn-primary" })</td>
             </tr>
         }
     </table>

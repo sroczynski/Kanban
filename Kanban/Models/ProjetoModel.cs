@@ -9,17 +9,17 @@ namespace Kanban.Models
 {
     public class ProjetoModel
     {
-        public static ProjetoIndexResponse Index()
+        public static List<Projeto> Index()
         {
-            ProjetoIndexResponse response = new ProjetoIndexResponse() { projetos = new List<Projeto>() };
+            List<Projeto> response = new List<Projeto>();
             using (var db = new KANBANEntities())
             {
-                response.projetos = db.projeto.Select(x => new Projeto() { id = x.id, titulo = x.titulo, descricao = x.descricao }).ToList();
+                response = db.projeto.Select(x => new Projeto() { id = x.id, titulo = x.titulo, descricao = x.descricao }).ToList();
             }
             return response;
         }
 
-        public static Result CriarProjeto(ProjetoRequest request)
+        public static Result CriarProjeto(Projeto request)
         {
             Result response = new Result() { success = true, Message = "Projeto Salvo com Sucesso" };
             using (KANBANEntities db = new KANBANEntities())
@@ -63,7 +63,7 @@ namespace Kanban.Models
             }
             catch (Exception)
             {
-                response.Message = "Ouve erro ao atualizar as informações do projeto, contate o suporte técnico.";
+                response.Message = "Houve erro ao atualizar as informações do projeto, contate o suporte técnico.";
                 response.success = false;
             }
 

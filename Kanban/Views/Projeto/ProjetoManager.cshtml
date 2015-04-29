@@ -1,12 +1,20 @@
 ﻿@model Data.Object.ProjetoRequest
 
 @{
-    ViewBag.Title = "ProjetoManager";
+    ViewBag.Title = "Manutenção de Projeto";
 }
 
-<h2>ProjetoManager</h2>
+<script>
+function onSuccess(data) {
+    if (data.success) {
+        alert(data.Message);
+    }
+}
+</script>
 
-@using (Ajax.BeginForm(Model.newRegister ? "Criar" : "Editar", new AjaxOptions() { OnSuccess="onSuccess", HttpMethod="POST" }))
+<h2>@ViewBag.Title</h2>
+
+@using (Ajax.BeginForm(Model.newRegister ? "Criar" : "Editar", new AjaxOptions() { OnSuccess = "onSuccess(data)", HttpMethod = "POST" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -14,33 +22,31 @@
     <fieldset>
         <legend>Projeto</legend>
 
+        @Html.ValidationSummary()
+
         @Html.HiddenFor(model => model.id)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.titulo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.titulo)
-            @Html.ValidationMessageFor(model => model.titulo)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.descricao)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.descricao)
-            @Html.ValidationMessageFor(model => model.descricao)
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <div class="input-group">
+                @Html.EditorFor(model => model.titulo)
+                @Html.ValidationMessageFor(model => model.titulo)
+            </div>
         </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <div class="input-group">
+                @Html.TextAreaFor(model => model.descricao, new { @class = "form-control", rows = "3" })
+                @Html.ValidationMessageFor(model => model.descricao)
+            </div>
+        </div>
+
+        <input type="submit" value="Salvar" class="btn btn-primary" />
+        @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-default" })
+
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

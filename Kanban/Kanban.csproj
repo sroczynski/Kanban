@@ -205,8 +205,8 @@
       <DependentUpon>ModelKanban.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\TarefaController.cs" />
+    <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controls\report.ascx.cs">
       <DependentUpon>report.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -258,8 +258,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelKanban.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProjetoModel.cs" />
     <Compile Include="Models\TarefaModel.cs" />
+    <Compile Include="Models\ProjetoModel.cs" />
     <Compile Include="permissao.cs">
       <DependentUpon>ModelKanban.tt</DependentUpon>
     </Compile>
@@ -407,6 +407,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\Master\Master.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Web.config" />
@@ -418,29 +419,7 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -451,6 +430,7 @@
     <Content Include="Views\Tarefa\TarefaManager.cshtml" />
     <Content Include="Views\Projeto\Index.cshtml" />
     <Content Include="Views\Projeto\ProjetoManager.cshtml" />
+    <Content Include="Views\Tarefa\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
