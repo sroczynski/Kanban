@@ -16,8 +16,7 @@ namespace Kanban.Controllers
 
         public ActionResult Index()
         {
-            var model = ProjetoModel.Index();
-            return View(model);
+            return View(ProjetoModel.Index());
         }
         
         [HttpGet]
@@ -48,5 +47,9 @@ namespace Kanban.Controllers
             return Json(response);
         }
 
+        public ActionResult Excluir(int projetoId)
+        {
+            return Json(ProjetoModel.ExcluirProjeto(projetoId));
+        }
     }
 }

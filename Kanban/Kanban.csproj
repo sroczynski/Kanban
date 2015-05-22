@@ -258,6 +258,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelKanban.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\TarefaModel.cs" />
     <Compile Include="Models\ProjetoModel.cs" />
     <Compile Include="permissao.cs">

@@ -21,7 +21,10 @@
                 <td>@item.id</td>
                 <td>@item.titulo</td>
                 <td>@item.descricao</td>
-                <td>@Html.ActionLink("Editar", "Editar", new { projetoId = item.id }, htmlAttributes: new { @class = "btn btn-primary" })</td>
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new { projetoId = item.id }, htmlAttributes: new { @class = "btn btn-primary"})
+                    @Html.ActionLink("Excluir", "Excluir", new { projetoId = item.id }, htmlAttributes: new { @class = "btn btn-danger"})
+                </td>
             </tr>
         }
     </table>

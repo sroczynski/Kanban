@@ -71,7 +71,24 @@ namespace Kanban.Models
         }
 
 
+        public static Result ExcluirProjeto(int projetoId)
+        {
+            Result response = new Result() { success = true, Message = "Projeto Excluído com sucesso." };
+            
+            using (KANBANEntities db = new KANBANEntities())
+            {
+                var projetoExcluir = db.projeto.FirstOrDefault(x => x.id == projetoId);
 
+                if (projetoExcluir != null)
+                    db.projeto.Remove(projetoExcluir);
+                else
+                {
+                    response.success = false;
+                    response.Message = "Houve Erro Exclusão do projeto. Contate o suporte técnico.";
+                }
+            }
 
+            return response;
+        }
     }
 }

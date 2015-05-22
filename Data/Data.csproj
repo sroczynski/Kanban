@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Object\Sprint.cs" />
     <Compile Include="Object\Projeto.cs" />
     <Compile Include="Object\Tarefa.cs" />
     <Compile Include="Object\Validation\Result.cs" />

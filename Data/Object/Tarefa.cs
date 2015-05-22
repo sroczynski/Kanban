@@ -12,17 +12,21 @@ namespace Data.Object
         public int id { get; set; }
 
         [Required]
-        public int sprint { get; set; }
+        public int idSprint { get; set; }
 
         [Required]
-        public int projeto { get; set; }
+        public int idProjeto { get; set; }
         
         [StringLength(500, ErrorMessage="Limite de 500 caractéres.")]
         [Required]
         public string descricao { get; set; }
 
         [Required]
-        public int status { get; set; }
+        public int idStatus { get; set; }
+
+        public int idGrupoUsuariosFases { get; set; }
+
+        public int indice { get; set; }
 
         [DataType(DataType.Time)]
         public TimeSpan tempoEstimado { get; set; }
@@ -31,14 +35,17 @@ namespace Data.Object
         public TimeSpan tempoTrabalhado { get; set; }
 
         [Required]
-        public int tipo { get; set; }
+        public int idTipo { get; set; }
 
-        
-        public int classificacao { get; set; }
+        public int idClassificacao { get; set; }
         
         public int tarefaPlanejada { get; set; }
 
-        public DateTime dataCriacao { get; set; }
+        public int idTarefaDependencia { get; set; }
+
+        public DateTime dtCriacao { get; set; }
+
+        public int idTarefaAgrupador { get; set; }
     }
 
     public class TarefaRequest : Tarefa
