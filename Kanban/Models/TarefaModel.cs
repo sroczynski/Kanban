@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Kanban.Models
 {
@@ -17,10 +18,22 @@ namespace Kanban.Models
                 response = db.tarefas.Select(x => new TarefaIndexView() { 
                     id = x.id,
                     projeto = x.projeto.titulo,
-                    dtCriacao = x.dt_criacao.Value,
+                    dtCriacao = x.dt_criacao,
                     titulo = "Adicionar Coluna no Banco" // de fato deve ser add a coluna titulo no banco
                 }).ToList();
             }
+            return response;
+        }
+
+        public static TarefaRequest CriarTarefa()
+        {
+            var response = new TarefaRequest() { newRegister = true };
+            
+            //using(var db = new KANBANEntities())
+            //{
+            //    response.sprints = db.sprints.Select(x => new SelectListItem(){ Value = x.id.ToString(), Text = x.descricao}).ToList();
+            //}
+
             return response;
         }
 
@@ -33,9 +46,12 @@ namespace Kanban.Models
                 {
                     descricao = request.descricao,
                     dt_criacao = DateTime.Now,
-                    id_projeto = request.projeto,
-                    id_sprints = request.sprint,
-                    id_status = request.status
+                    id_projeto = request.idProjeto,
+                    id_sprints = request.idSprint,
+                    id_status = request.idStatus,
+                    id_classificacao = request.idClassificacao,
+                    id_tipo = request.idTipo,
+                    id_tarefa_agrupador = request.idTarefaAgrupador
                 });
                 db.SaveChanges();
             }
@@ -49,9 +65,9 @@ namespace Kanban.Models
             {
                 response = db.tarefas.Select(x => new TarefaRequest() { 
                     id = x.id, 
-                    projeto = x.id_projeto.Value,
-                    sprint = x.id_sprints.Value,
-                    status = x.id_status.Value,
+                    idProjeto = x.id_projeto,
+                    idSprint = x.id_sprints.Value,
+                    status = new Status(){ idStatus =  x.id_status.Value, descricao = x.status.descricao},
                     descricao = x.descricao, 
                     newRegister = false }).FirstOrDefault(x => x.id == tarefaId);
             }
@@ -67,10 +83,10 @@ namespace Kanban.Models
                 using (KANBANEntities db = new KANBANEntities())
                 {
                     Kanban.tarefas tarefaEdit = db.tarefas.FirstOrDefault(x => x.id == request.id);
-                    tarefaEdit.id_projeto = request.projeto;
+                    tarefaEdit.id_projeto = request.idProjeto;
                     tarefaEdit.descricao = request.descricao;
-                    tarefaEdit.id_status = request.status;
-                    tarefaEdit.id_tipo = request.tipo;
+                    tarefaEdit.id_status = request.status.idStatus;
+                    tarefaEdit.id_tipo = request.tipo.idTipo;
                     tarefaEdit.id_sprints = 
 
                     db.SaveChanges();

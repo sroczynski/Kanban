@@ -15,8 +15,8 @@ namespace Kanban
     public partial class projeto_x_usuario
     {
         public int id { get; set; }
-        public Nullable<int> id_projeto { get; set; }
-        public Nullable<int> id_usuario { get; set; }
+        public int id_projeto { get; set; }
+        public int id_usuario { get; set; }
     
         public virtual projeto projeto { get; set; }
         public virtual projeto projeto1 { get; set; }

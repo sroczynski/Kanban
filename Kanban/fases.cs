@@ -21,7 +21,7 @@ namespace Kanban
     
         public int id { get; set; }
         public string descricao { get; set; }
-        public Nullable<bool> ativo { get; set; }
+        public bool ativo { get; set; }
     
         public virtual ICollection<grupo_usuarios_x_fases> grupo_usuarios_x_fases { get; set; }
     }

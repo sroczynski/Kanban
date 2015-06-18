@@ -27,6 +27,8 @@ namespace Kanban
         public string descricao { get; set; }
         public Nullable<System.DateTime> dt_inicio { get; set; }
         public Nullable<System.DateTime> dt_fim { get; set; }
+        public Nullable<bool> ativo { get; set; }
+        public Nullable<System.DateTime> dt_finalizacao { get; set; }
     
         public virtual ICollection<sprints> sprints1 { get; set; }
         public virtual sprints sprints2 { get; set; }

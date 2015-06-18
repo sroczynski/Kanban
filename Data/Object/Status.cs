@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,9 +9,16 @@ namespace Data.Object
 {
     public class Status
     {
-        public int id { get; set; }
 
-        [Required(ErrorMessage="Descreva o status.")]
+        public int idStatus { get; set; }
+
+        [Required(ErrorMessage = "Informe uma descrição para o Status", AllowEmptyStrings = false)]
+        [StringLength(20, ErrorMessage = "Limite de 20 caractéres.")]
         public string descricao { get; set; }
+    }
+
+    public class StatusRequest : Status
+    {
+        public bool newRegister { get; set; }
     }
 }

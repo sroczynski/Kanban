@@ -77,10 +77,13 @@ namespace Kanban.Models
             
             using (KANBANEntities db = new KANBANEntities())
             {
-                var projetoExcluir = db.projeto.FirstOrDefault(x => x.id == projetoId);
+                projeto projetoExcluir = db.projeto.FirstOrDefault(x => x.id == projetoId);
 
                 if (projetoExcluir != null)
+                {
                     db.projeto.Remove(projetoExcluir);
+                    db.SaveChanges();
+                }
                 else
                 {
                     response.success = false;

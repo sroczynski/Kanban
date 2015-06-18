@@ -9,13 +9,16 @@ namespace Kanban.Models
 {
     public class HomeModel
     {
-        public static List<Projeto> Index()
+        public static ProjetoIndex Index()
         {
-            List<Projeto> response = new List<Projeto>();
+            ProjetoIndex response = new ProjetoIndex();
             using (var db = new KANBANEntities())
             {
-                response = db.projeto.Select(x => new Projeto() { id = x.id, titulo = x.titulo, descricao = x.descricao }).ToList();
+                response.Fases = db.fases.Select(x => new Fase() { idFase = x.id, descricao = x.descricao }).ToList();
+
+                response.Projeto = db.projeto.Select(x => new Projeto() { id = x.id, titulo = x.titulo, descricao = x.descricao }).ToList();
             }
+
             return response;
         }
     }

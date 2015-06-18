@@ -2,26 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <title>@ViewBag.Title - TaskBoard</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/bootstrap")
     <link href="/Content/bootstrap.css" rel="stylesheet">
     @Scripts.Render("~/bundles/modernizr")
-
+    @Scripts.Render("~/bundles/interact")
     <script type="text/javascript" src="~/Scripts/Master/Master.js"></script>
 </head>
 <body>
-    <header>
-        @Html.ActionLink("Gerenciamento de Projetos", "Index", "Projeto", null, new { @class="btn btn-info" })
-        @Html.ActionLink("Gerenciamento de Tarefa", "Index", "Tarefa", null, new { @class = "btn btn-info" })
-    </header>
+    <!-- Menu lateral -->
+    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-reorder"></i></a>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="active"></li>
+            <li>@Html.ActionLink("Gerenciamento de Projetos", "Index", "Projeto")</li>
+            <li>@Html.ActionLink("Gerenciamento de Tarefa", "Index", "Tarefa")</li>
+            <li>@Html.ActionLink("Gerenciamento de Sprint", "Index", "Sprint")</li>
+            <li>@Html.ActionLink("Gerenciamento de Status", "Index", "Status")</li>
+            <li>@Html.ActionLink("Gerenciamento de Tipo", "Index", "Tipo")</li>
+
+        </ul>
+    </div>
+    <!-- Menu lateral -->
+
     <div id="body">
         @RenderSection("featured", required: false)
-        <section class="content-wrapper main-content clear-fix">
+        @*<section class="container content-wrapper main-content clear-fix">*@
             @RenderBody()
-        </section>
+        @*</section>*@
     </div>
     <footer>
         <div class="content-wrapper">

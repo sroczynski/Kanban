@@ -26,8 +26,8 @@ namespace Kanban
         public int id { get; set; }
         public string descricao { get; set; }
         public string cor_grupo { get; set; }
-        public Nullable<int> id_usuario_lider { get; set; }
-        public Nullable<bool> ativo { get; set; }
+        public int id_usuario_lider { get; set; }
+        public bool ativo { get; set; }
     
         public virtual ICollection<grupo_usuario_x_permissao> grupo_usuario_x_permissao { get; set; }
         public virtual ICollection<grupo_usuario_x_permissao> grupo_usuario_x_permissao1 { get; set; }

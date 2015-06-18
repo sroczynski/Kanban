@@ -21,7 +21,7 @@ namespace Kanban
         }
     
         public int id { get; set; }
-        public string descricao { get; set; }
+        public string titulo { get; set; }
     
         public virtual ICollection<grupo_usuario_x_permissao> grupo_usuario_x_permissao { get; set; }
         public virtual ICollection<grupo_usuario_x_permissao> grupo_usuario_x_permissao1 { get; set; }

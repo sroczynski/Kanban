@@ -27,19 +27,19 @@ namespace Kanban
     
         public int id { get; set; }
         public Nullable<int> id_sprints { get; set; }
-        public Nullable<int> id_projeto { get; set; }
+        public int id_projeto { get; set; }
         public string descricao { get; set; }
         public Nullable<int> id_status { get; set; }
         public Nullable<int> id_grupo_usuarios_x_fases { get; set; }
-        public Nullable<int> indice { get; set; }
-        public Nullable<int> id_usuario_creator { get; set; }
+        public int indice { get; set; }
+        public int id_usuario_creator { get; set; }
         public Nullable<System.TimeSpan> tempo_estimado { get; set; }
         public Nullable<System.TimeSpan> tempo_trabalhado { get; set; }
-        public Nullable<int> id_tipo { get; set; }
+        public int id_tipo { get; set; }
         public Nullable<int> id_classificacao { get; set; }
         public Nullable<bool> tarefa_planejada { get; set; }
         public Nullable<int> id_tarefa_dependencia { get; set; }
-        public Nullable<System.DateTime> dt_criacao { get; set; }
+        public System.DateTime dt_criacao { get; set; }
         public Nullable<int> id_tarefa_agrupador { get; set; }
     
         public virtual classificacao classificacao { get; set; }

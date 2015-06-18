@@ -49,7 +49,7 @@ namespace Kanban.Controllers
 
         public ActionResult Excluir(int projetoId)
         {
-            return Json(ProjetoModel.ExcluirProjeto(projetoId));
+            return Json(ProjetoModel.ExcluirProjeto(projetoId),JsonRequestBehavior.AllowGet);
         }
     }
 }

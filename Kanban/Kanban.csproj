@@ -205,6 +205,9 @@
       <DependentUpon>ModelKanban.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TipoController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\SprintController.cs" />
     <Compile Include="Controllers\TarefaController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controls\report.ascx.cs">
@@ -259,6 +262,9 @@
       <DependentUpon>ModelKanban.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Models\TipoModel.cs" />
+    <Compile Include="Models\StatusModel.cs" />
+    <Compile Include="Models\SprintModel.cs" />
     <Compile Include="Models\TarefaModel.cs" />
     <Compile Include="Models\ProjetoModel.cs" />
     <Compile Include="permissao.cs">
@@ -369,6 +375,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="GoogleAnalytics.csproj" />
     <Content Include="Icon.png" />
+    <Content Include="Scripts\interact\interact.js" />
     <Content Include="Scripts\js\chart-config.js" />
     <Content Include="Scripts\js\init-analytics.js" />
     <Content Include="Scripts\js\jquery-1.9.1.min.js" />
@@ -432,6 +439,10 @@
     <Content Include="Views\Projeto\Index.cshtml" />
     <Content Include="Views\Projeto\ProjetoManager.cshtml" />
     <Content Include="Views\Tarefa\Index.cshtml" />
+    <Content Include="Views\Sprint\Index.cshtml" />
+    <Content Include="Views\Sprint\SprintManager.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\Status\StatusManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

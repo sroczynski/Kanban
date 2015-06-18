@@ -23,7 +23,7 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Criar()
         {
-            return View("TarefaManager", new TarefaRequest() { newRegister = true});
+            return View("TarefaManager", TarefaModel.CriarTarefa());
         }
 
         [HttpPost]

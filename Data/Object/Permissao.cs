@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Data.Object
 {
-    public class Permissao
-    {
-        public int id { get; set; }
+    public class Permissao {
 
-        [Required(ErrorMessage="Informe a Permissão.")]
-        public string titulo { get; set; }
-    }
+		public int idPermissao{ get; set; }
+		
+		[Required(ErrorMessage="Informe uma descrição para a Permissão",AllowEmptyStrings=false)]
+		[StringLength(20, ErrorMessage="Limite de 20 caractéres.")]
+		public string descricao{ get; set; }
+	}
 }

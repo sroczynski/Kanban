@@ -21,8 +21,8 @@ namespace Kanban
         }
     
         public int id { get; set; }
-        public Nullable<int> id_grupo_usuarios { get; set; }
-        public Nullable<int> id_fases { get; set; }
+        public int id_grupo_usuarios { get; set; }
+        public int id_fases { get; set; }
     
         public virtual fases fases { get; set; }
         public virtual grupo_usuarios grupo_usuarios { get; set; }

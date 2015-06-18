@@ -15,8 +15,7 @@ namespace Kanban
     public partial class tarefa_x_comentario
     {
         public int id { get; set; }
-        public Nullable<int> id_tarefas { get; set; }
-        public Nullable<int> id_comentario { get; set; }
+        public int id_tarefas { get; set; }
         public Nullable<System.DateTime> dt_comentário { get; set; }
         public string descricao { get; set; }
         public string anexo { get; set; }

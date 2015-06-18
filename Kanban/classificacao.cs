@@ -22,7 +22,7 @@ namespace Kanban
     
         public int id { get; set; }
         public string descricao { get; set; }
-        public Nullable<bool> ativo { get; set; }
+        public bool ativo { get; set; }
     
         public virtual ICollection<tarefas> tarefas { get; set; }
         public virtual ICollection<tarefas> tarefas1 { get; set; }

@@ -29,7 +29,6 @@ namespace Kanban
     
         public int id { get; set; }
         public Nullable<int> id_avatar { get; set; }
-        public string descricao { get; set; }
         public string nome_usuario { get; set; }
         public string login { get; set; }
         public string senha { get; set; }

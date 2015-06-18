@@ -5,18 +5,20 @@
 }
 
 <script>
-function onSuccess(data) {
-    var modalAlert = $('divNone')
-    if (data.success) {
-        alert(data.Message);
-    }
+    function onSuccess() {
+
+        alert("TESTE");
+    //var modalAlert = $('divNone')
+    //if (data.success) {
+    //    alert(data.Message);
+    //}
     
 }
 </script>
 
 <h2>@ViewBag.Title</h2>
 
-@using (Ajax.BeginForm(Model.newRegister ? "Criar" : "Editar", new AjaxOptions() { OnSuccess = "onSuccess(data)", HttpMethod = "POST" }))
+@using (Ajax.BeginForm(Model.newRegister ? "Criar" : "Editar", new AjaxOptions() { OnSuccess = "onSuccess", HttpMethod = "POST" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
