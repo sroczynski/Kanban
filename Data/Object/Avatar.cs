@@ -12,4 +12,16 @@ namespace Data.Object
 
         public string pathAvatar { get; set; }
     }
+
+    public class AvatarView : Avatar
+    {
+        public bool newRegister { get; set; }
+    }
+
+    public class AvatarRequest : Avatar { }
+
+    public class AvatarIndex
+    {
+        public List<Avatar> Avatars { get; set; }
+    }
 }

@@ -14,4 +14,16 @@ namespace Data.Object
 
         public int idGrupoUsuario { get; set; }
     }
+
+    public class GrupoUsuarioPermissaoView : GrupoUsuarioPermissao
+    {
+        public bool newRegister { get; set; }
+    }
+
+    public class GrupoUsuarioPermissaoRequest : GrupoUsuarioPermissao { }
+
+    public class GrupoUsuarioPermissaoIndex
+    {
+        public List<GrupoUsuarioPermissao> GrupoUsuarioPermissao { get; set; }
+    }
 }

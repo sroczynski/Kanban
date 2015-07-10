@@ -36,4 +36,17 @@ namespace Data.Object
 		[DataType(DataType.Time)]
 		public TimeSpan dtFimTarefa{ get; set; }
 	}
+
+
+    public class TarefaUsuarioView : TarefaUsuario
+    {
+        public bool newRegister { get; set; }
+    }
+
+    public class TarefaUsuarioRequest : TarefaUsuario { }
+
+    public class TarefaUsuarioIndex
+    {
+        public List<TarefaUsuario> TarefaUsuario { get; set; }
+    }
 }

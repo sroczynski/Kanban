@@ -20,4 +20,16 @@ namespace Data.Object
         public bool ativo { get; set; }
             
     }
+
+    public class ClassificacaoView : Classificacao
+    {
+        public bool newRegister { get; set; }
+    }
+
+    public class ClassificacaoRequest : Classificacao { }
+
+    public class ClassificacaoIndex
+    {
+        public List<Classificacao> Classificacaos { get; set; }
+    }
 }

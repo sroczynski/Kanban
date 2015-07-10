@@ -18,4 +18,17 @@ namespace Data.Object
 
         public bool ativo { get; set; }
     }
+
+
+    public class GrupoUsuariosView : GrupoUsuarios
+    {
+        public bool newRegister { get; set; }
+    }
+
+    public class GrupoUsuariosRequest : GrupoUsuarios { }
+
+    public class GrupoUsuariosIndex
+    {
+        public List<GrupoUsuarios> GrupoUsuarios { get; set; }
+    }
 }

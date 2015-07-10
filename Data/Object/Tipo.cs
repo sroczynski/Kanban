@@ -21,8 +21,16 @@ namespace Data.Object{
         [Required]
         public bool final { get; set; }
 	}
-
-    public class TipoRequest : Tipo {
+    
+    public class TipoView : Tipo
+    {
         public bool newRegister { get; set; }
+    }
+
+    public class TipoRequest : Tipo { }
+
+    public class TipoIndex
+    {
+        public List<Tipo> Tipo { get; set; }
     }
 }

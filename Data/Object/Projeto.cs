@@ -23,15 +23,22 @@ namespace Data.Object
         public List<Tarefa> listTarefa { get; set; }
     }
 
+    /// <summary>
+    /// São as informações e dados do projeto enviados para a tela
+    /// </summary>
     public class ProjetoView : Projeto {
         public bool newRegister { get; set; }    
     }
 
+    /// <summary>
+    /// Utilzado para buscar as requisições de create e update
+    /// </summary>
     public class ProjetoRequest : Projeto { }
-
+    /// <summary>
+    /// Listagem dos Projetos
+    /// </summary>
     public class ProjetoIndex
     {
         public List<Projeto> Projetos { get; set; }
     }
-
 }

@@ -22,4 +22,16 @@ namespace Data.Object {
 		[StringLength(200, ErrorMessage="Limite de 200 caractéres.")]
 		public string anexo{ get; set; }
 	}
+
+    public class ComentarioView : Comentario
+    {
+        public bool newRegister { get; set; }
+    }
+
+    public class ComentarioRequest : Comentario { }
+
+    public class ComentarioIndex
+    {
+        public List<Comentario> Comentarios { get; set; }
+    }
 }

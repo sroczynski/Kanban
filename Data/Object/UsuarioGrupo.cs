@@ -21,11 +21,24 @@ namespace Data.Object
 		
 		public bool ativo{ get; set; }
 		
-		public List<Fase> listFase;
+		public List<Fases> listFase;
 		
 		public List<Permissao> listPermissao;
 		
 		public List<Usuario> listUsuario;
 		
 	}
+
+
+    public class UsuarioGrupoView : UsuarioGrupo
+    {
+        public bool newRegister { get; set; }
+    }
+
+    public class UsuarioGrupoRequest : UsuarioGrupo { }
+
+    public class UsuarioGrupoIndex
+    {
+        public List<UsuarioGrupo> UsuarioGrupo { get; set; }
+    }
 }

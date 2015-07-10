@@ -17,8 +17,17 @@ namespace Data.Object
         public string descricao { get; set; }
     }
 
-    public class StatusRequest : Status
+
+    public class StatusView : Status
     {
         public bool newRegister { get; set; }
     }
+
+    public class StatusRequest : Status { }
+
+    public class StatusIndex
+    {
+        public List<Status> Status { get; set; }
+    }
+
 }

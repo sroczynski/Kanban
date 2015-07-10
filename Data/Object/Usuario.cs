@@ -27,4 +27,17 @@ namespace Data.Object
         [Required(ErrorMessage="Informe uma senha",AllowEmptyStrings=false)]
         public string senha { get; set; }
     }
+
+
+    public class UsuarioView : Usuario
+    {
+        public bool newRegister { get; set; }
+    }
+
+    public class UsuarioRequest : Usuario { }
+
+    public class UsuarioIndex
+    {
+        public List<Usuario> Usuario { get; set; }
+    }
 }

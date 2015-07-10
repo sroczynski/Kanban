@@ -15,4 +15,16 @@ namespace Data.Object
 		[StringLength(20, ErrorMessage="Limite de 20 caractéres.")]
 		public string descricao{ get; set; }
 	}
+
+    public class PermissaoView : Permissao
+    {
+        public bool newRegister { get; set; }
+    }
+
+    public class PermissaoRequest : Permissao { }
+
+    public class PermissaoIndex
+    {
+        public List<Permissao> Permissao { get; set; }
+    }
 }

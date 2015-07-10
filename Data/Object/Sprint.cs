@@ -28,12 +28,15 @@ namespace Data.Object
         public List<Tarefa> tarefa { get; set; }
     }
 
-
-    public class SprintRequest : Sprint
+    public class SprintView : Sprint
     {
         public bool newRegister { get; set; }
     }
 
+    public class SprintRequest : Sprint { }
 
-
+    public class SprintIndex
+    {
+        public List<Sprint> Sprint { get; set; }
+    }
 }
