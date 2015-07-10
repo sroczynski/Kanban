@@ -18,26 +18,20 @@ namespace Data.Object
         [Required(ErrorMessage = "Descreva brevemente o Projeto, para que todos tenham conhecimento de sua finalidade.", AllowEmptyStrings = false)]
         [StringLength(500, ErrorMessage = "Limite 250 caracteres... Não reclame o Twitter tem só 140.")]
         public string descricao { get; set; }
-        
-        
-		public List<Usuario> listUsuario{ get; set; }
-        
-        public List<Tarefa> listTarefa{ get; set; }
-		
+
+        public List<Usuario> listUsuario { get; set; }
+        public List<Tarefa> listTarefa { get; set; }
     }
 
-    public class ProjetoRequest : Projeto
-    {
-        public bool newRegister { get; set; }
+    public class ProjetoView : Projeto {
+        public bool newRegister { get; set; }    
     }
 
-
+    public class ProjetoRequest : Projeto { }
 
     public class ProjetoIndex
     {
-        public List<Fase> Fases { get; set; }
-
-        public List<Projeto> Projeto { get; set; }
+        public List<Projeto> Projetos { get; set; }
     }
 
 }

@@ -15,7 +15,8 @@ namespace Kanban.Models
             List<TarefaIndexView> response = new List<TarefaIndexView>();
             using (var db = new KANBANEntities())
             {
-                response = db.tarefas.Select(x => new TarefaIndexView() { 
+                response = db.tarefas.Select(x => new TarefaIndexView()
+                {
                     id = x.id,
                     projeto = x.projeto.titulo,
                     dtCriacao = x.dt_criacao,
@@ -25,15 +26,21 @@ namespace Kanban.Models
             return response;
         }
 
-        public static TarefaRequest CriarTarefa()
+        public static TarefaRequest CriarTarefaView()
         {
-            var response = new TarefaRequest() { newRegister = true };
-            
-            //using(var db = new KANBANEntities())
-            //{
-            //    response.sprints = db.sprints.Select(x => new SelectListItem(){ Value = x.id.ToString(), Text = x.descricao}).ToList();
-            //}
+            TarefaRequest response = new TarefaRequest();
 
+            using (KANBANEntities db = new KANBANEntities())
+            {
+                response = new TarefaRequest()
+                {
+                    Projeto = db.projeto.Select(p => new SelectListItem() { Text = p.titulo, Value = p.id.ToString() }).ToList(),
+                    Sprint = db.sprints.Select(sp => new SelectListItem() { Text = sp.descricao, Value = sp.id.ToString() }).ToList(),
+                    Status = db.status.Select(st => new SelectListItem() { Text = st.descricao, Value = st.id.ToString() }).ToList(),
+                    Classificacao = db.classificacao.Select(cl => new SelectListItem() { Text = cl.descricao, Value = cl.id.ToString() }).ToList(),
+                    newRegister = true
+                };
+            }
             return response;
         }
 
@@ -63,18 +70,24 @@ namespace Kanban.Models
             TarefaRequest response = new TarefaRequest();
             using (KANBANEntities db = new KANBANEntities())
             {
-                response = db.tarefas.Select(x => new TarefaRequest() { 
-                    id = x.id, 
-                    idProjeto = x.id_projeto,
-                    idSprint = x.id_sprints.Value,
-                    status = new Status(){ idStatus =  x.id_status.Value, descricao = x.status.descricao},
-                    descricao = x.descricao, 
-                    newRegister = false }).FirstOrDefault(x => x.id == tarefaId);
+                response = db.tarefas.Select(x => new TarefaRequest()
+                {
+                    TarefaId = x.id,
+                    Projeto = db.projeto.Select(p => new SelectListItem() { Text = p.titulo, Value = p.id.ToString(), Selected = (p.id == x.id_projeto ? true : false) }).ToList(),
+                    Sprint = db.sprints.Select(sp => new SelectListItem() { Text = sp.descricao, Value = sp.id.ToString(), Selected = (sp.id == x.id_sprints ? true : false) }).ToList(),
+                    Status = db.status.Select(st => new SelectListItem() { Text = st.descricao, Value = st.id.ToString(), Selected = (st.id == x.id_status ? true : false) }).ToList(),
+                    indice = x.indice,
+                    Classificacao = db.classificacao.Select(cl => new SelectListItem() { Text = cl.descricao, Value = cl.id.ToString(), Selected = (cl.id == x.id_classificacao ? true : false) }).ToList(),
+                    Descricao = x.descricao,
+                    TempoEstimado = x.tempo_estimado.Value,
+                    TempoTrabalhado = x.tempo_trabalhado.Value,
+                    DataCriacao = x.dt_criacao
+                }).FirstOrDefault(x => x.TarefaId == tarefaId);
             }
             return response;
         }
 
-        public static Result EditarProjeto(Tarefa request)
+        public static Result EditarTarefa(Tarefa request)
         {
             Result response = new Result() { success = true, Message = "Tarefa Salva com Sucesso!" };
 
@@ -87,7 +100,6 @@ namespace Kanban.Models
                     tarefaEdit.descricao = request.descricao;
                     tarefaEdit.id_status = request.status.idStatus;
                     tarefaEdit.id_tipo = request.tipo.idTipo;
-                    tarefaEdit.id_sprints = 
 
                     db.SaveChanges();
                 }
@@ -100,8 +112,6 @@ namespace Kanban.Models
 
             return response;
         }
-
-
 
 
     }

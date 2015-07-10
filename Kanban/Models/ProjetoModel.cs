@@ -9,14 +9,19 @@ namespace Kanban.Models
 {
     public class ProjetoModel
     {
-        public static List<Projeto> Index()
+        public static ProjetoIndex Index()
         {
-            List<Projeto> response = new List<Projeto>();
-            using (var db = new KANBANEntities())
+            ProjetoIndex index = new ProjetoIndex() { Projetos = new List<Projeto>() };
+            using (KANBANEntities db = new KANBANEntities())
             {
-                response = db.projeto.Select(x => new Projeto() { id = x.id, titulo = x.titulo, descricao = x.descricao }).ToList();
+                index.Projetos = db.projeto.Select(x => new Projeto()
+                {
+                    id = x.id,
+                    titulo = x.titulo,
+                    descricao = x.descricao
+                }).ToList();
             }
-            return response;
+            return index;
         }
 
         public static Result CriarProjeto(Projeto request)
@@ -35,12 +40,18 @@ namespace Kanban.Models
             return response;
         }
 
-        public static ProjetoRequest EditarProjeto(int projetoId)
+        public static ProjetoView BuscarProjeto(int projetoId)
         {
-            ProjetoRequest response = new ProjetoRequest();
+            ProjetoView response = new ProjetoView();
+            
             using (KANBANEntities db = new KANBANEntities())
             {
-                response = db.projeto.Select(x => new ProjetoRequest() { id = x.id, titulo = x.titulo, descricao = x.descricao, newRegister = false }).FirstOrDefault(x => x.id == projetoId);
+                response = db.projeto.Select(x => new ProjetoView() { 
+                    id = x.id, 
+                    titulo = x.titulo, 
+                    descricao = x.descricao, 
+                    newRegister = false 
+                }).FirstOrDefault(x => x.id == projetoId);
             }
 
             return response;
@@ -74,7 +85,7 @@ namespace Kanban.Models
         public static Result ExcluirProjeto(int projetoId)
         {
             Result response = new Result() { success = true, Message = "Projeto Excluído com sucesso." };
-            
+
             using (KANBANEntities db = new KANBANEntities())
             {
                 projeto projetoExcluir = db.projeto.FirstOrDefault(x => x.id == projetoId);
