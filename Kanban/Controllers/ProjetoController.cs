@@ -22,7 +22,7 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Criar()
         {
-            return View("ProjetoManager", new ProjetoRequest() { newRegister = true});
+            return View("ProjetoManager", new ProjetoView() { newRegister = true});
         }
 
         [HttpPost]
@@ -36,12 +36,12 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Editar(int projetoId)
         {
-            ProjetoRequest model = ProjetoModel.EditarProjeto(projetoId);
+            ProjetoView model = ProjetoModel.BuscarProjeto(projetoId);
             return View("ProjetoManager", model);
         }
 
         [HttpPost]
-        public ActionResult Editar(Projeto request)
+        public ActionResult Editar(ProjetoRequest request)
         {
             var response = ProjetoModel.EditarProjeto(request);
             return Json(response);

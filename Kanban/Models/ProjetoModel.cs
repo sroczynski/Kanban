@@ -57,7 +57,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static Result EditarProjeto(Projeto request)
+        public static Result EditarProjeto(ProjetoRequest request)
         {
             Result response = new Result() { success = true, Message = "Projeto Salvo com Sucesso!" };
 
