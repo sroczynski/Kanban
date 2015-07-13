@@ -9,17 +9,20 @@ namespace Kanban.Models
 {
     public class StatusModel
     {
-        public static List<Status> Index()
+		public static StatusIndex Index()
         {
-            List<Status> response = new List<Status>();
+			StatusIndex index = new StatusIndex (){ Status = new List<Status> () };
             using (var db = new KANBANEntities())
             {
-                response = db.status.Select(x => new Status() { idStatus = x.id, descricao = x.descricao}).ToList();
+				index.Status = db.status.Select(x => new Status() { 
+					idStatus = x.id, 
+					descricao = x.descricao
+				}).ToList();
             }
-            return response;
+            return index;
         }
 
-        public static Result CriarStatus(Status request)
+        public static Result Criar(Status request)
         {
             Result response = new Result() { success = true, Message = "Status salva com Sucesso" };
             using (KANBANEntities db = new KANBANEntities())
@@ -34,17 +37,20 @@ namespace Kanban.Models
             return response;
         }
 
-        public static StatusRequest EditarStatus(int statusId)
-        {
-            StatusRequest response = new StatusRequest();
-            using (KANBANEntities db = new KANBANEntities())
-            {
-                response = db.status.Select(x => new StatusRequest() { idStatus = x.id, descricao = x.descricao, newRegister = false }).FirstOrDefault(x => x.idStatus == statusId);
-            }
+		public static StatusView Buscar( int index ){
+			StatusView response = new StatusView ();
 
-            return response;
-        }
+			using( KANBANEntities db = new KANBANEntities() ){
+				response = db.status.Select( x => new StatusView(){
+					idStatus = x.id,
+					descricao = x.descricao,
+					newRegister = false
+				}).FirstOrDefault( x=> x.idStatus == index );
+			}
+		
+		}
 
+        
         public static Result EditarStatus(Status request)
         {
             Result response = new Result() { success = true, Message = "Status Salva com Sucesso!" };
@@ -67,17 +73,17 @@ namespace Kanban.Models
             return response;
         }
 
-        public static Result ExcluirStatus(int statusId)
+        public static Result ExcluirStatus(int index)
         {
             Result response = new Result() { success = true, Message = "Status Excluída com sucesso." };
             
             using (KANBANEntities db = new KANBANEntities())
             {
-                status StatusExcluir = db.status.FirstOrDefault(x => x.id == statusId);
+                status excluir = db.status.FirstOrDefault(x => x.id == index);
 
-                if (StatusExcluir != null)
+                if (excluir != null)
                 {
-                    db.status.Remove(StatusExcluir);
+                    db.status.Remove(excluir);
                     db.SaveChanges();
                 }
                 else

@@ -30,6 +30,6 @@ namespace Data.Object
 
     public class ClassificacaoIndex
     {
-        public List<Classificacao> Classificacaos { get; set; }
+        public List<Classificacao> Classificacao { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -45,7 +45,6 @@
     <Compile Include="Object\Avatar.cs" />
     <Compile Include="Object\Classificacao.cs" />
     <Compile Include="Object\Comentario.cs" />
-    <Compile Include="Object\Fase.cs" />
     <Compile Include="Object\Fases.cs" />
     <Compile Include="Object\GrupoUsuarioPermissao.cs" />
     <Compile Include="Object\GrupoUsuarios.cs" />

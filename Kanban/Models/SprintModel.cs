@@ -3,23 +3,25 @@ using Data.Object.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Kanban.Models
 {
     public class SprintModel
     {
-        public static List<Sprint> Index()
+		public static SprintIndex Index()
         {
-            List<Sprint> response = new List<Sprint>();
+			SprintIndex index = new SprintIndex (){ Sprint = new List<Sprint>() };
             using (var db = new KANBANEntities())
             {
-                response = db.sprints.Select(x => new Sprint() { idSprint = x.id, descricao = x.descricao}).ToList();
+				index.Sprint = db.sprints.Select(x => new Sprint() { 
+					idSprint = x.id,
+					descricao = x.descricao
+				}).ToList();
             }
-            return response;
+			return index;
         }
 
-        public static Result CriarSprint(Sprint request)
+        public static Result Criar(Sprint request)
         {
             Result response = new Result() { success = true, Message = "Sprint salva com Sucesso" };
             using (KANBANEntities db = new KANBANEntities())
@@ -27,8 +29,6 @@ namespace Kanban.Models
                 db.sprints.Add(new Kanban.sprints()
                 {
                     descricao = request.descricao,
-                    
-                    
                 });
                 db.SaveChanges();
             }
@@ -36,18 +36,23 @@ namespace Kanban.Models
             return response;
         }
 
-        public static SprintRequest EditarSprint(int sprintId)
-        {
-            SprintRequest response = new SprintRequest();
-            using (KANBANEntities db = new KANBANEntities())
-            {
-                response = db.sprints.Select(x => new SprintRequest() { idSprint = x.id, descricao = x.descricao, newRegister = false }).FirstOrDefault(x => x.idSprint == sprintId);
-            }
+		public static SprintView Buscar( int index ){
+			
+			SprintView view = new SprintView ();
+			using (KANBANEntities db = new KANBANEntities ()) {
+			
+				view = db.sprints.Select (x => new SprintView () {
+				
+					idSprint = x.id,
+					descricao = x.descricao,
+					newRegister = false
+				}).FirstOrDefault (x => x.idSprint == index);
+			}
+		
+		}
 
-            return response;
-        }
 
-        public static Result EditarSprint(Sprint request)
+        public static Result Editar(Sprint request)
         {
             Result response = new Result() { success = true, Message = "Sprint Salva com Sucesso!" };
 
@@ -69,17 +74,17 @@ namespace Kanban.Models
             return response;
         }
 
-        public static Result ExcluirSprint(int sprintId)
+        public static Result Excluir(int index)
         {
             Result response = new Result() { success = true, Message = "Sprint Excluída com sucesso." };
             
             using (KANBANEntities db = new KANBANEntities())
             {
-                sprints sprintExcluir = db.sprints.FirstOrDefault(x => x.id == sprintId);
+				sprints excluir = db.sprints.FirstOrDefault(x => x.id == index);
 
-                if (sprintExcluir != null)
+                if (excluir != null)
                 {
-                    db.sprints.Remove(sprintExcluir);
+                    db.sprints.Remove(excluir);
                     db.SaveChanges();
                 }
                 else

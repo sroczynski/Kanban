@@ -34,6 +34,7 @@ namespace Data.Object
     /// Utilzado para buscar as requisições de create e update
     /// </summary>
     public class ProjetoRequest : Projeto { }
+
     /// <summary>
     /// Listagem dos Projetos
     /// </summary>

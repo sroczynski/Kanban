@@ -9,17 +9,33 @@ namespace Kanban.Models
 {
     public class TipoModel
     {
-        public static List<Tipo> Index()
+		public static TipoIndex Index()
         {
-            List<Tipo> response = new List<Tipo>();
+			TipoIndex index = new TipoIndex (){ Tipo = new List<Tipo> () };
             using (var db = new KANBANEntities())
             {
-                response = db.tipo.Select(x => new Tipo() { idTipo = x.id, descricao = x.descricao}).ToList();
+				index.Tipo = db.tipo.Select(x => new Tipo() { 
+					idTipo = x.id, 
+					descricao = x.descricao
+				}).ToList();
             }
-            return response;
+            return index;
         }
 
-        public static Result CriarTipo(Tipo request)
+		public static TipoView Buscar( int index ){
+		
+			TipoView response = new TipoView ();
+
+			using (var db = new KANBANEntities ()) {
+				response = db.tipo.Select (x => new TipoView () {
+					idTipo = x.id,
+					descricao = x.descricao,
+					newRegister = false
+				}).FirstOrDefault (x => x.idTipo == index);
+			}
+		}
+
+        public static Result Criar(Tipo request)
         {
             Result response = new Result() { success = true, Message = "Tipo salva com Sucesso" };
             using (KANBANEntities db = new KANBANEntities())
@@ -29,17 +45,6 @@ namespace Kanban.Models
                     descricao = request.descricao
                 });
                 db.SaveChanges();
-            }
-
-            return response;
-        }
-
-        public static TipoRequest EditarTipo(int TipoId)
-        {
-            TipoRequest response = new TipoRequest();
-            using (KANBANEntities db = new KANBANEntities())
-            {
-                response = db.tipo.Select(x => new TipoRequest() { idTipo = x.id, descricao = x.descricao, newRegister = false }).FirstOrDefault(x => x.idTipo == TipoId);
             }
 
             return response;
@@ -67,13 +72,13 @@ namespace Kanban.Models
             return response;
         }
 
-        public static Result ExcluirTipo(int tipoId)
+        public static Result Excluir(int index)
         {
             Result response = new Result() { success = true, Message = "Tipo Excluída com sucesso." };
             
             using (KANBANEntities db = new KANBANEntities())
             {
-                tipo TipoExcluir = db.tipo.FirstOrDefault(x => x.id == tipoId);
+                tipo TipoExcluir = db.tipo.FirstOrDefault(x => x.id == index);
 
                 if (TipoExcluir != null)
                 {
