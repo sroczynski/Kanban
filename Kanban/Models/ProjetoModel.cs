@@ -24,7 +24,7 @@ namespace Kanban.Models
             return index;
         }
 
-        public static Result CriarProjeto(Projeto request)
+        public static Result Criar(Projeto request)
         {
             Result response = new Result() { success = true, Message = "Projeto Salvo com Sucesso" };
             using (KANBANEntities db = new KANBANEntities())
@@ -40,7 +40,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static ProjetoView BuscarProjeto(int projetoId)
+        public static ProjetoView Buscar(int projetoId)
         {
             ProjetoView response = new ProjetoView();
             
@@ -57,7 +57,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static Result EditarProjeto(ProjetoRequest request)
+        public static Result Editar(ProjetoRequest request)
         {
             Result response = new Result() { success = true, Message = "Projeto Salvo com Sucesso!" };
 
@@ -82,7 +82,7 @@ namespace Kanban.Models
         }
 
 
-        public static Result ExcluirProjeto(int projetoId)
+        public static Result Excluir(int projetoId)
         {
             Result response = new Result() { success = true, Message = "Projeto Excluído com sucesso." };
 

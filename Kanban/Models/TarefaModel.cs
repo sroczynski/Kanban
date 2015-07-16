@@ -26,7 +26,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static TarefaRequest CriarTarefaView()
+        public static TarefaRequest Criar()
         {
             TarefaRequest response = new TarefaRequest();
 
@@ -44,7 +44,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static Result CriarTarefa(Tarefa request)
+        public static Result Criar(Tarefa request)
         {
             Result response = new Result() { success = true, Message = "Tarefa Salva com Sucesso." };
             using (KANBANEntities db = new KANBANEntities())
@@ -65,7 +65,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static TarefaRequest EditarTarefa(int tarefaId)
+        public static TarefaRequest Editar(int tarefaId)
         {
             TarefaRequest response = new TarefaRequest();
             using (KANBANEntities db = new KANBANEntities())
@@ -87,7 +87,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static Result EditarTarefa(Tarefa request)
+        public static Result Editar(Tarefa request)
         {
             Result response = new Result() { success = true, Message = "Tarefa Salva com Sucesso!" };
 

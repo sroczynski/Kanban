@@ -28,7 +28,7 @@ namespace Kanban.Controllers
         [HttpPost]
         public ActionResult Criar(Projeto request)
         {
-            Result response = ProjetoModel.CriarProjeto(request);
+            Result response = ProjetoModel.Criar(request);
             return Json(response);
         }
 
@@ -36,20 +36,20 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Editar(int projetoId)
         {
-            ProjetoView model = ProjetoModel.BuscarProjeto(projetoId);
+            ProjetoView model = ProjetoModel.Buscar(projetoId);
             return View("ProjetoManager", model);
         }
 
         [HttpPost]
         public ActionResult Editar(ProjetoRequest request)
         {
-            var response = ProjetoModel.EditarProjeto(request);
+            var response = ProjetoModel.Editar(request);
             return Json(response);
         }
 
         public ActionResult Excluir(int projetoId)
         {
-            return Json(ProjetoModel.ExcluirProjeto(projetoId),JsonRequestBehavior.AllowGet);
+            return Json(ProjetoModel.Excluir(projetoId),JsonRequestBehavior.AllowGet);
         }
     }
 }

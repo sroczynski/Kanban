@@ -56,7 +56,7 @@ namespace Kanban.Models
         }
 
 
-        public static Result EditarStatus(Status request)
+        public static Result Editar(Status request)
         {
             Result response = new Result() { success = true, Message = "Status Salva com Sucesso!" };
 
@@ -78,7 +78,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static Result ExcluirStatus(int index)
+        public static Result Excluir(int index)
         {
             Result response = new Result() { success = true, Message = "Status Excluída com sucesso." };
 
