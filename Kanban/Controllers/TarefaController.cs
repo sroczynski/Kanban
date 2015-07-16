@@ -45,8 +45,8 @@ namespace Kanban.Controllers
         [HttpPost]
         public ActionResult Editar(Projeto request)
         {
-            var response = ProjetoModel.EditarProjeto(request);
-            return Json(response);
+            //var response = TarefaModel.EditarTarefa(request);
+            return Json(new object());
         }
 
     }

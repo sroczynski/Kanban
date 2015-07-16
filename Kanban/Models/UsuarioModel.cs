@@ -38,6 +38,7 @@ namespace Kanban.Models
 					newRegister = false
 				}).FirstOrDefault (x => x.idUsuario == index);
 			}
+            return response;
 		}
 
 		public static Result Criar(Usuario request)

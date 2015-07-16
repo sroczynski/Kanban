@@ -11,7 +11,7 @@ namespace Kanban.Models
 		public static ComentarioIndex Index()
 		{
 			ComentarioIndex index = new  ComentarioIndex(){ 
-				Comentarios = new List<Classificacao> () };
+				Comentarios = new List<Comentario> () };
 
 			using (var db = new KANBANEntities())
 			{
@@ -34,6 +34,7 @@ namespace Kanban.Models
 					newRegister = false
 				}).FirstOrDefault (x => x.idComentario == index);
 			}
+            return response;
 		}
 
 		public static Result Criar(Comentario request)

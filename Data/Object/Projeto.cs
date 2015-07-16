@@ -41,5 +41,6 @@ namespace Data.Object
     public class ProjetoIndex
     {
         public List<Projeto> Projetos { get; set; }
+        public List<Fases> Fases { get; set; }
     }
 }

@@ -22,13 +22,13 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Criar()
         {
-            return View("StatusManager", new StatusRequest() { newRegister = true});
+            return View("StatusManager", new StatusView() { newRegister = true});
         }
 
         [HttpPost]
         public ActionResult Criar(Status request)
         {
-            Result response = StatusModel.CriarStatus(request);
+            Result response = StatusModel.Criar(request);
             return Json(response);
         }
 
@@ -36,7 +36,7 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Editar(int StatusId)
         {
-            StatusRequest model = StatusModel.EditarStatus(StatusId);
+            StatusView model = StatusModel.Buscar(StatusId);
             return View("StatusManager", model);
         }
 

@@ -22,13 +22,13 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Criar()
         {
-            return View("TipoManager", new TipoRequest() { newRegister = true});
+            return View("TipoManager", new TipoView() { newRegister = true});
         }
 
         [HttpPost]
         public ActionResult Criar(Tipo request)
         {
-            Result response = TipoModel.CriarTipo(request);
+            Result response = TipoModel.Criar(request);
             return Json(response);
         }
 
@@ -36,7 +36,7 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Editar(int TipoId)
         {
-            TipoRequest model = TipoModel.EditarTipo(TipoId);
+            TipoView model = TipoModel.Buscar(TipoId);
             return View("TipoManager", model);
         }
 
@@ -49,7 +49,7 @@ namespace Kanban.Controllers
 
         public ActionResult Excluir(int TipoId)
         {
-            return Json(TipoModel.ExcluirTipo(TipoId),JsonRequestBehavior.AllowGet);
+            return Json(TipoModel.Excluir(TipoId),JsonRequestBehavior.AllowGet);
         }
     }
 }

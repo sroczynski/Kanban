@@ -22,13 +22,13 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Criar()
         {
-            return View("SprintManager", new SprintRequest() { newRegister = true});
+            return View("SprintManager", new SprintView() { newRegister = true});
         }
 
         [HttpPost]
         public ActionResult Criar(Sprint request)
         {
-            Result response = SprintModel.CriarSprint(request);
+            Result response = SprintModel.Criar(request);
             return Json(response);
         }
 
@@ -36,20 +36,20 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Editar(int sprintId)
         {
-            SprintRequest model = SprintModel.EditarSprint(sprintId);
+            SprintView model = SprintModel.Buscar(sprintId);
             return View("SprintManager", model);
         }
 
         [HttpPost]
         public ActionResult Editar(Sprint request)
         {
-            var response = SprintModel.EditarSprint(request);
+            var response = SprintModel.Editar(request);
             return Json(response);
         }
 
         public ActionResult Excluir(int sprintId)
         {
-            return Json(SprintModel.ExcluirSprint(sprintId),JsonRequestBehavior.AllowGet);
+            return Json(SprintModel.Excluir(sprintId),JsonRequestBehavior.AllowGet);
         }
     }
 }

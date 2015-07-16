@@ -33,6 +33,7 @@ namespace Kanban.Models
 					newRegister = false
 				}).FirstOrDefault (x => x.idTipo == index);
 			}
+            return response;
 		}
 
         public static Result Criar(Tipo request)

@@ -34,6 +34,7 @@ namespace Kanban.Models
 					newRegister = false
 				}).FirstOrDefault (x => x.idFase == index);
 			}
+            return response;
 		}
 
 		public static Result Criar(Fases request)

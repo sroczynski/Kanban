@@ -7,95 +7,102 @@ using System.Web;
 
 namespace Kanban.Models
 {
-	public class ClassificacaoModel
-	{
-		public static ClassificacaoIndex Index()
-		{
-			ClassificacaoIndex index = new  ClassificacaoIndex(){ 
-				Classificacao = new List<Classificacao> () };
-			
-			using (var db = new KANBANEntities())
-			{
-				index.Classificacao = db.tipo.Select(x => new Classificacao() { 
-					idClassificacao = x.id, 
-					descricao = x.descricao
-				}).ToList();
-			}
-			return index;
-		}
+    public class ClassificacaoModel
+    {
+        public static ClassificacaoIndex Index()
+        {
+            ClassificacaoIndex index = new ClassificacaoIndex()
+            {
+                Classificacao = new List<Classificacao>()
+            };
 
-		public static ClassificacaoView Buscar( int index ){
+            using (var db = new KANBANEntities())
+            {
+                index.Classificacao = db.tipo.Select(x => new Classificacao()
+                {
+                    idClassificacao = x.id,
+                    descricao = x.descricao
+                }).ToList();
+            }
+            return index;
+        }
 
-			ClassificacaoView response = new ClassificacaoView ();
+        public static ClassificacaoView Buscar(int index)
+        {
 
-			using (var db = new KANBANEntities ()) {
-				response = db.tipo.Select (x => new ClassificacaoView () {
-					idClassificacao = x.id,
-					descricao = x.descricao,
-					newRegister = false
-				}).FirstOrDefault (x => x.idClassificacao == index);
-			}
-		}
+            ClassificacaoView response = new ClassificacaoView();
 
-		public static Result Criar(Classificacao request)
-		{
-			Result response = new Result() { success = true, Message = "Classificação salva com Sucesso" };
-			using (KANBANEntities db = new KANBANEntities())
-			{
-				db.tipo.Add(new Kanban.tipo()
-					{
-						descricao = request.descricao
-					});
-				db.SaveChanges();
-			}
+            using (var db = new KANBANEntities())
+            {
+                response = db.tipo.Select(x => new ClassificacaoView()
+                {
+                    idClassificacao = x.id,
+                    descricao = x.descricao,
+                    newRegister = false
+                }).FirstOrDefault(x => x.idClassificacao == index);
+            }
+            return response;
+        }
 
-			return response;
-		}
+        public static Result Criar(Classificacao request)
+        {
+            Result response = new Result() { success = true, Message = "Classificação salva com Sucesso" };
+            using (KANBANEntities db = new KANBANEntities())
+            {
+                db.tipo.Add(new Kanban.tipo()
+                    {
+                        descricao = request.descricao
+                    });
+                db.SaveChanges();
+            }
 
-		public static Result Editar(Classificacao request)
-		{
-			Result response = new Result() { success = true, Message = "Classificacao Salva com Sucesso!" };
+            return response;
+        }
 
-			try
-			{
-				using (KANBANEntities db = new KANBANEntities())
-				{
-					Kanban.classificacao edit = db.classificacao.FirstOrDefault(x => x.id == request.idClassificacao);
-					edit.descricao = request.descricao;
-					db.SaveChanges();
-				}
-			}
-			catch (Exception)
-			{
-				response.Message = "Houve erro ao atualizar as informações da Classificação, contate o suporte técnico.";
-				response.success = false;
-			}
+        public static Result Editar(Classificacao request)
+        {
+            Result response = new Result() { success = true, Message = "Classificacao Salva com Sucesso!" };
 
-			return response;
-		}
+            try
+            {
+                using (KANBANEntities db = new KANBANEntities())
+                {
+                    Kanban.classificacao edit = db.classificacao.FirstOrDefault(x => x.id == request.idClassificacao);
+                    edit.descricao = request.descricao;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                response.Message = "Houve erro ao atualizar as informações da Classificação, contate o suporte técnico.";
+                response.success = false;
+            }
 
-		public static Result Excluir(int index)
-		{
-			Result response = new Result() { success = true, Message = "Classificação Excluída com sucesso." };
+            return response;
+        }
 
-			using (KANBANEntities db = new KANBANEntities())
-			{
-				classificacao excluir = db.classificacao.FirstOrDefault(x => x.id == index);
+        public static Result Excluir(int index)
+        {
+            Result response = new Result() { success = true, Message = "Classificação Excluída com sucesso." };
 
-				if (excluir != null)
-				{
-					db.classificacao.Remove(excluir);
-					db.SaveChanges();
-				}
-				else
-				{
-					response.success = false;
-					response.Message = "Houve Erro Exclusão da Classificação. Contate o suporte técnico.";
-				}
-			}
+            using (KANBANEntities db = new KANBANEntities())
+            {
+                classificacao excluir = db.classificacao.FirstOrDefault(x => x.id == index);
 
-			return response;
-		}
-	}
+                if (excluir != null)
+                {
+                    db.classificacao.Remove(excluir);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    response.success = false;
+                    response.Message = "Houve Erro Exclusão da Classificação. Contate o suporte técnico.";
+                }
+            }
+
+            return response;
+        }
+    }
 }
 

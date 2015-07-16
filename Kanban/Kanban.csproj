@@ -353,6 +353,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="GoogleAnalytics.csproj" />
     <Content Include="Icon.png" />
+    <Content Include="ModelKanban.edmx.sql" />
     <Content Include="Scripts\interact\interact.js" />
     <Content Include="Scripts\js\chart-config.js" />
     <Content Include="Scripts\js\init-analytics.js" />

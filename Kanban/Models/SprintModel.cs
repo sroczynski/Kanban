@@ -8,17 +8,18 @@ namespace Kanban.Models
 {
     public class SprintModel
     {
-		public static SprintIndex Index()
+        public static SprintIndex Index()
         {
-			SprintIndex index = new SprintIndex (){ Sprint = new List<Sprint>() };
+            SprintIndex index = new SprintIndex() { Sprint = new List<Sprint>() };
             using (var db = new KANBANEntities())
             {
-				index.Sprint = db.sprints.Select(x => new Sprint() { 
-					idSprint = x.id,
-					descricao = x.descricao
-				}).ToList();
+                index.Sprint = db.sprints.Select(x => new Sprint()
+                {
+                    idSprint = x.id,
+                    descricao = x.descricao
+                }).ToList();
             }
-			return index;
+            return index;
         }
 
         public static Result Criar(Sprint request)
@@ -36,20 +37,23 @@ namespace Kanban.Models
             return response;
         }
 
-		public static SprintView Buscar( int index ){
-			
-			SprintView view = new SprintView ();
-			using (KANBANEntities db = new KANBANEntities ()) {
-			
-				view = db.sprints.Select (x => new SprintView () {
-				
-					idSprint = x.id,
-					descricao = x.descricao,
-					newRegister = false
-				}).FirstOrDefault (x => x.idSprint == index);
-			}
-		
-		}
+        public static SprintView Buscar(int index)
+        {
+
+            SprintView view = new SprintView();
+            using (KANBANEntities db = new KANBANEntities())
+            {
+
+                view = db.sprints.Select(x => new SprintView()
+                {
+
+                    idSprint = x.id,
+                    descricao = x.descricao,
+                    newRegister = false
+                }).FirstOrDefault(x => x.idSprint == index);
+            }
+            return view;
+        }
 
 
         public static Result Editar(Sprint request)
@@ -77,10 +81,10 @@ namespace Kanban.Models
         public static Result Excluir(int index)
         {
             Result response = new Result() { success = true, Message = "Sprint Excluída com sucesso." };
-            
+
             using (KANBANEntities db = new KANBANEntities())
             {
-				sprints excluir = db.sprints.FirstOrDefault(x => x.id == index);
+                sprints excluir = db.sprints.FirstOrDefault(x => x.id == index);
 
                 if (excluir != null)
                 {
