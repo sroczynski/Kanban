@@ -14,6 +14,7 @@ namespace Kanban
     
     public partial class permissao
     {
+        public string descricao;
         public permissao()
         {
             this.grupo_usuario_x_permissao = new HashSet<grupo_usuario_x_permissao>();

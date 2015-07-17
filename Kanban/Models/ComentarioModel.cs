@@ -15,7 +15,7 @@ namespace Kanban.Models
 
 			using (var db = new KANBANEntities())
 			{
-				index.Comentarios = db.tipo.Select(x => new Comentario() { 
+				index.Comentarios = db.tarefa_x_comentario.Select(x => new Comentario() { 
 					idComentario = x.id, 
 					descricao = x.descricao
 				}).ToList();
@@ -28,7 +28,7 @@ namespace Kanban.Models
 			ComentarioView response = new ComentarioView ();
 
 			using (var db = new KANBANEntities ()) {
-				response = db.tipo.Select (x => new ComentarioView () {
+				response = db.tarefa_x_comentario.Select (x => new ComentarioView () {
 					idComentario = x.id,
 					descricao = x.descricao,
 					newRegister = false
