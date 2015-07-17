@@ -51,7 +51,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static Result EditarTipo(Tipo request)
+        public static Result Editar(Tipo request)
         {
             Result response = new Result() { success = true, Message = "Tipo Salva com Sucesso!" };
 
