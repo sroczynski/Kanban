@@ -30,7 +30,7 @@ namespace Kanban.Controllers
         [HttpPost]
         public ActionResult Criar(Tarefa request)
         {
-            Result response = TarefaModel.CriarTarefa(request);
+            Result response = TarefaModel.Criar(request);
             return Json(response);
         }
 
@@ -38,7 +38,7 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Editar(int TarefaId)
         {
-            TarefaRequest model = TarefaModel.EditarTarefa(TarefaId);
+            TarefaRequest model = TarefaModel.Editar(TarefaId);
             return View("TarefaManager", model);
         }
 

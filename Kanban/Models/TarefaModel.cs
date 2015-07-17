@@ -40,7 +40,6 @@ namespace Kanban.Models
                 {
                     Sprint = SprintModel.GetSprints(),                    
                     Projeto = db.projeto.Select(p => new SelectListItem() { Text = p.titulo, Value = p.id.ToString() }).ToList(),
-                    Sprint = db.sprints.Select(sp => new SelectListItem() { Text = sp.descricao, Value = sp.id.ToString() }).ToList(),
                     Status = db.status.Select(st => new SelectListItem() { Text = st.descricao, Value = st.id.ToString() }).ToList(),
                     Classificacao = db.classificacao.Select(cl => new SelectListItem() { Text = cl.descricao, Value = cl.id.ToString() }).ToList(),
                     newRegister = true
@@ -49,7 +48,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static Result CriarTarefa(Tarefa request)
+        public static Result Criar(Tarefa request)
         {
             Result response = new Result() { success = true, Message = "Tarefa Salva com Sucesso." };
             using (KANBANEntities db = new KANBANEntities())
@@ -70,7 +69,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static TarefaRequest EditarTarefa(int tarefaId)
+        public static TarefaRequest Editar(int tarefaId)
         {
             TarefaRequest response = new TarefaRequest();
             using (KANBANEntities db = new KANBANEntities())
@@ -92,7 +91,7 @@ namespace Kanban.Models
             return response;
         }
 
-        public static Result EditarTarefa(Tarefa request)
+        public static Result Editar(Tarefa request)
         {
             Result response = new Result() { success = true, Message = "Tarefa Salva com Sucesso!" };
 

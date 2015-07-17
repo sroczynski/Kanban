@@ -43,13 +43,13 @@ namespace Kanban.Controllers
         [HttpPost]
         public ActionResult Editar(Status request)
         {
-            var response = StatusModel.EditarStatus(request);
+            var response = StatusModel.Editar(request);
             return Json(response);
         }
 
         public ActionResult Excluir(int StatusId)
         {
-            return Json(StatusModel.ExcluirStatus(StatusId),JsonRequestBehavior.AllowGet);
+            return Json(StatusModel.Excluir(StatusId),JsonRequestBehavior.AllowGet);
         }
     }
 }

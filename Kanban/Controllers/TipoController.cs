@@ -14,6 +14,8 @@ namespace Kanban.Controllers
         //
         // GET: /Tipo/
 
+        int idade = 10 ;
+
         public ActionResult Index()
         {
             return View(TipoModel.Index());
@@ -43,7 +45,7 @@ namespace Kanban.Controllers
         [HttpPost]
         public ActionResult Editar(Tipo request)
         {
-            var response = TipoModel.EditarTipo(request);
+            var response = TipoModel.Editar(request);
             return Json(response);
         }
 

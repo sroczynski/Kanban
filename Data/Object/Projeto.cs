@@ -42,5 +42,6 @@ namespace Data.Object
     {
         public List<Projeto> Projetos { get; set; }
         public List<Fases> Fases { get; set; }
+        public List<Tarefa> Tarefas { get; set; }
     }
 }
