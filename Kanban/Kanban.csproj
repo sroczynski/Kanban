@@ -234,6 +234,7 @@
       <DependentUpon>ModelKanban.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Models\PermissaoModel.cs" />
     <Compile Include="Models\TipoModel.cs" />
     <Compile Include="Models\StatusModel.cs" />
     <Compile Include="Models\SprintModel.cs" />
