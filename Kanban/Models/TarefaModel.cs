@@ -26,7 +26,11 @@ namespace Kanban.Models
             return response;
         }
 
-        public static TarefaRequest CriarTarefaView()
+        /// <summary>
+        /// Retorno os dados dos objetos de tela da Tarefa
+        /// </summary>
+        /// <returns></returns>
+        public static TarefaRequest CriarView()
         {
             TarefaRequest response = new TarefaRequest();
 
@@ -34,6 +38,7 @@ namespace Kanban.Models
             {
                 response = new TarefaRequest()
                 {
+                    Sprint = SprintModel.GetSprints(),                    
                     Projeto = db.projeto.Select(p => new SelectListItem() { Text = p.titulo, Value = p.id.ToString() }).ToList(),
                     Sprint = db.sprints.Select(sp => new SelectListItem() { Text = sp.descricao, Value = sp.id.ToString() }).ToList(),
                     Status = db.status.Select(st => new SelectListItem() { Text = st.descricao, Value = st.id.ToString() }).ToList(),

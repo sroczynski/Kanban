@@ -89,9 +89,6 @@ C:\workspace\Kanban\Kanban\bin\Google.GData.Client.dll
 C:\workspace\Kanban\Kanban\bin\Google.GData.Extensions.dll
 C:\workspace\Kanban\Kanban\bin\Data.dll
 C:\workspace\Kanban\Kanban\bin\Data.pdb
-C:\Users\feevale\Desktop\Kanban_Manager\Kanban\obj\Debug\Kanban.csprojResolveAssemblyReference.cache
-C:\Users\feevale\Desktop\Kanban_Manager\Kanban\obj\Debug\Kanban.dll
-C:\Users\feevale\Desktop\Kanban_Manager\Kanban\obj\Debug\Kanban.pdb
 C:\Users\feevale\Desktop\Kanban_Manager\Kanban\bin\Kanban.dll
 C:\Users\feevale\Desktop\Kanban_Manager\Kanban\bin\Kanban.pdb
 C:\Users\feevale\Desktop\Kanban_Manager\Kanban\bin\Antlr3.Runtime.dll
@@ -165,3 +162,6 @@ C:\Users\feevale\Desktop\Kanban_Manager\Kanban\bin\ko\System.Spatial.resources.d
 C:\Users\feevale\Desktop\Kanban_Manager\Kanban\bin\ru\System.Spatial.resources.dll
 C:\Users\feevale\Desktop\Kanban_Manager\Kanban\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\feevale\Desktop\Kanban_Manager\Kanban\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\feevale\Desktop\Kanban_Manager\Kanban\obj\Debug\Kanban.csprojResolveAssemblyReference.cache
+C:\Users\feevale\Desktop\Kanban_Manager\Kanban\obj\Debug\Kanban.dll
+C:\Users\feevale\Desktop\Kanban_Manager\Kanban\obj\Debug\Kanban.pdb

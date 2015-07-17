@@ -3,6 +3,7 @@ using Data.Object.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace Kanban.Models
 {
@@ -96,6 +97,28 @@ namespace Kanban.Models
                     response.success = false;
                     response.Message = "Houve Erro Exclusão da sprint. Contate o suporte técnico.";
                 }
+            }
+
+            return response;
+        }
+
+
+
+        /*
+         *
+         * Compartilhados.
+         */
+
+
+        public static List<SelectListItem> GetSprints(int? projetoId = null, int? select = null)
+        {
+            List<SelectListItem> response = new List<SelectListItem>();
+
+            using (var db = new KANBANEntities())
+            {
+                response = db.sprints
+                    //.Where(x => !projetoId.HasValue || x.idProjeto)
+                    .Select(x => new SelectListItem() { Text = x.descricao, Value = x.id.ToString(), Selected = select.HasValue ? x.id == select.Value : false }).ToList();
             }
 
             return response;
