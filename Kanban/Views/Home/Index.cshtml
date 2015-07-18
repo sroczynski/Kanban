@@ -91,15 +91,89 @@
     </script>
 
     <style>
+        .textPost-it {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border: 0px;
+            width: 190px !important;
+            margin: 10px 0px 0px 5px;
+        }
+
+        hr {
+            margin: 10px 0px 0px 5px;
+            width: 90%;
+        }
+
         .post-it {
             float: left;
-            background-color: #29e !important;
-            border: solid 1px #333 !important;
-            padding: 20px;
-            height: auto !important;
-            width: 175px !important;
-            margin: 10px;
+            background-color: transparent;
+            border: 0px;
+            padding: 0px;
+            height: 210px !important;
+            width: 210px !important;
+            margin: 0px 0px 0px 0px;
             color: white;
+            background-image: url(../../Images/post-it.png);
+            background-repeat: no-repeat;
+            background-size: 210px;
+        }
+
+        timer {
+            display: inline-block;
+            background-color: #0088cf;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            padding: 1px;
+            padding-left: 5px;
+            height: 25px !important;
+            width: 95px;
+            margin: 0px 0px 0px 5px;
+        }
+
+        input[type='time'] {
+            font-family: Verdana;
+            font-weight: 600;
+            font-size: small;
+        }
+
+        .play {
+            display: inline-block;
+            background-color: transparent;
+            border: 0px;
+            padding: 7px;
+            height: 25px !important;
+            width: 25px !important;
+            margin: 5px 0px 0px 0px;
+            background-image: url(../../Images/play.png);
+            background-size: 25px;
+            background-repeat: no-repeat;
+        }
+
+        .pause {
+            display: inline-block;
+            background-color: transparent;
+            border: 0px;
+            padding: 7px;
+            height: 25px !important;
+            width: 25px !important;
+            margin: 0px;
+            background-image: url(../../Images/pause.png);
+            background-size: 25px;
+            background-repeat: no-repeat;
+        }
+
+        .stop {
+            display: inline-block;
+            background-color: transparent;
+            border: 0px;
+            padding: 7px;
+            height: 25px !important;
+            width: 25px !important;
+            margin: 0px;
+            background-image: url(../../Images/stop.png);
+            background-size: 25px;
+            background-repeat: no-repeat;
         }
 
         .dropzone {
@@ -115,8 +189,8 @@
             min-width: 40px;
             padding: 2em 0.5em;
             color: #fff;
-            background-color: #29e;
-            border: solid 2px #fff;
+            background-color: transparent;
+            border: 0px;
             -webkit-transform: translate(0px, 0px);
             transform: translate(0px, 0px);
             transition: background-color 0.3s;
@@ -145,13 +219,23 @@
                 @foreach (var tarefa in Model.Projetos)
                 {
                     <div class="draggable drag-drop post-it">
-                        <h3>@tarefa.titulo</h3>
-                        <hr />
-                        <p>@tarefa.descricao</p>
+                        <div style="height:70%">
+                            <h3 class="textPost-it">@tarefa.titulo</h3>
+                            <hr />
+                            <p class="textPost-it">@tarefa.descricao</p>
+                        </div>
+                        <div style="height:30%;text-align: center; width: 165px; margin: auto;">
+                            <input type="time" class="timer">
+                            <!-- <div class="display"><p class="um">00 : 00 : 00</p></div>-->
+                            <input type="button" class="play">
+                            <input type="button" class="pause">
+                            <input type="button" class="stop">
+                        </div>
                     </div>
                 }
             </div>
         }
+
     </div>
 
 

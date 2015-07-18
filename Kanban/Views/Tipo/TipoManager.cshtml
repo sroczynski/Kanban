@@ -1,4 +1,4 @@
-﻿@model Data.Object.TipoView
+﻿@model Data.Object.TipoRequest
 
 @{
     ViewBag.Title = "Manutenção de Sprint";
@@ -20,7 +20,7 @@
 
         @Html.ValidationSummary()
 
-        @Html.HiddenFor(model => model.idTipo)
+        @Html.HiddenFor(model => model.idStatus)
 
         <div class="form-group">
             <label for="titulo">Título:</label>

@@ -22,7 +22,7 @@ namespace Kanban.Models
                 index.Permissao = db.permissao.Select(x => new Permissao()
                 {
                     idPermissao = x.id,
-                    descricao = x.descricao
+                    descricao = x.titulo
                 }).ToList();
             }
             return index;
@@ -38,7 +38,7 @@ namespace Kanban.Models
                 response = db.permissao.Select(x => new PermissaoView()
                 {
                     idPermissao = x.id,
-                    descricao = x.descricao,
+                    descricao = x.titulo,
                     newRegister = false
                 }).FirstOrDefault(x => x.idPermissao == index);
             }
@@ -52,7 +52,7 @@ namespace Kanban.Models
             {
                 db.permissao.Add(new Kanban.permissao()
                 {
-                    descricao = request.descricao
+                    titulo = request.descricao
                 });
                 db.SaveChanges();
             }
@@ -69,7 +69,7 @@ namespace Kanban.Models
                 using (KANBANEntities db = new KANBANEntities())
                 {
                     Kanban.permissao edit = db.permissao.FirstOrDefault(x => x.id == request.idPermissao);
-                    edit.descricao = request.descricao;
+                    edit.titulo = request.descricao;
                     db.SaveChanges();
                 }
             }

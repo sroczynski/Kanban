@@ -13,9 +13,6 @@ namespace Kanban.Controllers
     {
         //
         // GET: /Tipo/
-
-        int idade = 10 ;
-
         public ActionResult Index()
         {
             return View(TipoModel.Index());

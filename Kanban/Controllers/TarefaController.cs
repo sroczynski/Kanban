@@ -38,7 +38,7 @@ namespace Kanban.Controllers
         [HttpGet]
         public ActionResult Editar(int TarefaId)
         {
-            TarefaRequest model = TarefaModel.Editar(TarefaId);
+            TarefaView model = TarefaModel.EditarView(TarefaId);
             return View("TarefaManager", model);
         }
 
