@@ -10,12 +10,12 @@ namespace Kanban.Models
 {
     public class TarefaModel
     {
-        public static List<TarefaIndexView> Index()
+        public static List<TarefaIndex> Index()
         {
-            List<TarefaIndexView> response = new List<TarefaIndexView>();
+            List<TarefaIndex> response = new List<TarefaIndex>();
             using (var db = new KANBANEntities())
             {
-                response = db.tarefas.Select(x => new TarefaIndexView()
+                response = db.tarefas.Select(x => new TarefaIndex()
                 {
                     id = x.id,
                     projeto = x.projeto.titulo,
@@ -30,18 +30,20 @@ namespace Kanban.Models
         /// Retorno os dados dos objetos de tela da Tarefa
         /// </summary>
         /// <returns></returns>
-        public static TarefaRequest CriarView()
+        public static TarefaView CriarView()
         {
-            TarefaRequest response = new TarefaRequest();
+            TarefaView response = new TarefaView();
 
             using (KANBANEntities db = new KANBANEntities())
             {
-                response = new TarefaRequest()
+                response = new TarefaView()
                 {
                     Sprint = SprintModel.GetSprints(),                    
-                    Projeto = db.projeto.Select(p => new SelectListItem() { Text = p.titulo, Value = p.id.ToString() }).ToList(),
-                    Status = db.status.Select(st => new SelectListItem() { Text = st.descricao, Value = st.id.ToString() }).ToList(),
-                    Classificacao = db.classificacao.Select(cl => new SelectListItem() { Text = cl.descricao, Value = cl.id.ToString() }).ToList(),
+                    Projeto = ProjetoModel.GetProjetoListItem(),
+                    Status = StatusModel.GetStatusListItem(),
+                    Classificacao = ClassificacaoModel.GetClassificacaoListItem(),
+                    Usuarios = UsuarioModel.GetListItem(),
+
                     newRegister = true
                 };
             }
@@ -69,23 +71,26 @@ namespace Kanban.Models
             return response;
         }
 
-        public static TarefaRequest Editar(int tarefaId)
+        public static TarefaView EditarView(int tarefaId)
         {
-            TarefaRequest response = new TarefaRequest();
+            TarefaView response = new TarefaView();
             using (KANBANEntities db = new KANBANEntities())
             {
-                response = db.tarefas.Select(x => new TarefaRequest()
+                response = db.tarefas.Select(x => new TarefaView()
                 {
                     TarefaId = x.id,
-                    Projeto = db.projeto.Select(p => new SelectListItem() { Text = p.titulo, Value = p.id.ToString(), Selected = (p.id == x.id_projeto ? true : false) }).ToList(),
-                    Sprint = db.sprints.Select(sp => new SelectListItem() { Text = sp.descricao, Value = sp.id.ToString(), Selected = (sp.id == x.id_sprints ? true : false) }).ToList(),
-                    Status = db.status.Select(st => new SelectListItem() { Text = st.descricao, Value = st.id.ToString(), Selected = (st.id == x.id_status ? true : false) }).ToList(),
-                    indice = x.indice,
-                    Classificacao = db.classificacao.Select(cl => new SelectListItem() { Text = cl.descricao, Value = cl.id.ToString(), Selected = (cl.id == x.id_classificacao ? true : false) }).ToList(),
                     Descricao = x.descricao,
+                    indice = x.indice,
+                    DataCriacao = x.dt_criacao,
                     TempoEstimado = x.tempo_estimado.Value,
                     TempoTrabalhado = x.tempo_trabalhado.Value,
-                    DataCriacao = x.dt_criacao
+
+                    Projeto = ProjetoModel.GetProjetoListItem(x.id_projeto),
+                    Sprint = SprintModel.GetSprints(x.id_projeto, x.id_sprints),
+                    Status = StatusModel.GetStatusListItem(x.id_status),
+                    Classificacao = ClassificacaoModel.GetClassificacaoListItem(x.id_classificacao),
+                    Tipo = TipoModel.GetListItem(x.id_tipo),
+                    Fases = FasesModel.GetListItem(1)
                 }).FirstOrDefault(x => x.TarefaId == tarefaId);
             }
             return response;

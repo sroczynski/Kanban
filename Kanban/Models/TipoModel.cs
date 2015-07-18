@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Kanban.Models
 {
@@ -93,6 +94,16 @@ namespace Kanban.Models
                 }
             }
 
+            return response;
+        }
+
+        public static List<SelectListItem> GetListItem(int? selectedId = null)
+        {
+            List<SelectListItem> response = new List<SelectListItem>();
+            using (var db = new KANBANEntities())
+            {
+                response = db.tipo.Select(x => new SelectListItem() { Text = x.descricao, Value = x.id.ToString(), Selected = selectedId.HasValue ? x.id == selectedId.Value : false }).ToList();
+            }
             return response;
         }
     }

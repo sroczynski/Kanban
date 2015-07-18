@@ -3,6 +3,7 @@ using Data.Object.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace Kanban.Models
 {
@@ -103,6 +104,18 @@ namespace Kanban.Models
 
 			return response;
 		}
+
+
+        public static List<SelectListItem> GetListItem(int? selectedId = null, int? projetoId = null)
+        {
+            List<SelectListItem> response = new List<SelectListItem>();
+            using (var db = new KANBANEntities())
+            {
+                response = db.usuario
+                    .Select(x => new SelectListItem() { Text = x.nome_usuario, Value = x.id.ToString(), Selected = selectedId.HasValue ? selectedId.Value == x.id : false }).ToList();
+            }
+            return response;
+        }
 	}
 }
 

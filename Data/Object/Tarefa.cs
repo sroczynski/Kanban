@@ -70,7 +70,7 @@ namespace Data.Object
         public Usuario usuarioCriador{ get; set; }
     }
 
-    public class TarefaIndexView
+    public class TarefaIndex
     {
         public int id { get; set; }
         public string titulo { get; set; }
@@ -78,22 +78,26 @@ namespace Data.Object
         public string projeto { get; set; }
     }
 
-
-    public class TarefaRequest
+    public class TarefaView
     {
         public bool newRegister { get; set; }
         
         public int TarefaId { get; set; }
-        public List<SelectListItem> Sprint { get; set; }
-        public List<SelectListItem> Projeto { get; set; }
         public string Descricao { get; set; }
-        public List<SelectListItem> Status { get; set; }
         public int indice { get; set; }
         public string UsuarioCriador { get; set; }
-        public TimeSpan TempoEstimado { get; set; }
-        public TimeSpan TempoTrabalhado { get; set; }
+
+        public List<SelectListItem> Sprint { get; set; }
+        public List<SelectListItem> Projeto { get; set; }
+        public List<SelectListItem> Status { get; set; }
+        public List<SelectListItem> Fases { get; set; }
         public List<SelectListItem> Tipo { get; set; }
         public List<SelectListItem> Classificacao { get; set; }
+        public List<SelectListItem> Usuarios { get; set; }
+
+        public TimeSpan TempoEstimado { get; set; }
+        public TimeSpan TempoTrabalhado { get; set; }
+        
         public DateTime DataCriacao { get; set; }
         //grupoUsuarioxFase - tarefa_planejada - tarefa_dependencia - tarefa_agrupador
     }
