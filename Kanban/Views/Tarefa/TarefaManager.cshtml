@@ -3,6 +3,11 @@
     ViewBag.Title = "Manutenção de Tarefa";
 }
 
+
+
+
+
+
 <h2>@ViewBag.Title</h2>
 
 @using (Ajax.BeginForm(Model.newRegister ? "Criar" : "Editar", new AjaxOptions() { OnSuccess = "onSuccess", HttpMethod = "POST" }))
@@ -48,6 +53,16 @@
 
     </fieldset>
 }
+
+
+
+
+
+
+
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
