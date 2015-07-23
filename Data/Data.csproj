@@ -57,7 +57,6 @@
     <Compile Include="Object\TarefaUsuario.cs" />
     <Compile Include="Object\Tipo.cs" />
     <Compile Include="Object\Usuario.cs" />
-    <Compile Include="Object\UsuarioGrupo.cs" />
     <Compile Include="Object\Validation\Result.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
